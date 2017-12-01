@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <name>alina</name>
+        <age>18</age>
+        <active>true</active>
+    </user>
+    <user>
+        <name>just</name>
+        <age>21</age>
+        <active>false</active>
+    </user>
+</users>
+
+
+exemplu de xml
