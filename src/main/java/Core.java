@@ -16,6 +16,7 @@ public class Core {
             JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
             Users users = (Users) jaxbUnMarshaller.unmarshal(file);
+
 //            Users users = (Users) jaxbUnMarshaller.unmarshal(new StringReader(
 //                    "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
 //                    "<users>\n" +
