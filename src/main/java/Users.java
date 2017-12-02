@@ -1,23 +1,18 @@
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
-
-@XmlRootElement
+@XmlRootElement(name="users")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Users {
 
-    private ArrayList<User> users;
+    @XmlElement(name="user")
+    private List<User> users;
 
-    public Users(ArrayList<User> users) {
-        this.users = users;
-    }
-
-    @XmlElement
-    public ArrayList<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

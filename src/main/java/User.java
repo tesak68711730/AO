@@ -1,14 +1,18 @@
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
 
+    @XmlElement(name="name")
     private String name;
-    private int age;
-    private  boolean active;
 
-    public User(String name, int age, boolean active) {
-        this.name = name;
-        this.age = age;
-        this.active = active;
-    }
+    @XmlElement(name="age")
+    private int age;
+
+    @XmlElement(name="active")
+    private boolean active;
 
     public String getName() {
         return name;
@@ -32,5 +36,14 @@ public class User {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", active=" + active +
+                '}';
     }
 }
