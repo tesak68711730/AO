@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <users>
     <user>
-        <name>alina</name>
-        <age>18</age>
+        <name>Alina</name>
+        <age>1</age>
         <active>true</active>
     </user>
     <user>
-        <name>just</name>
-        <age>21</age>
+        <name>Justin</name>
+        <age>7</age>
         <active>false</active>
+    </user>
+    <user>
+        <name>Vasea</name>
+        <age>8</age>
+        <active>true</active>
+    </user>
+    <user>
+        <name>Ioana</name>
+        <age>4</age>
+        <active>false</active>
+    </user>
+
+    <user>
+        <name>Ion</name>
+        <age>5</age>
+        <active>true</active>
+    </user>
+    <user>
+        <name>Luminita</name>
+        <age>8</age>
+        <active>true</active>
     </user>
 </users>
 
 
-exemplu de xml
+example of xml

@@ -6,54 +6,52 @@ import javax.xml.bind.Unmarshaller;
 
 public class Core {
 
-    static  File data = new File("D:\\data.xml");
-
     public static void main(String[] args) {
 
-
         try {
-            readAndShowDataFromFile(data);
+            Users users = getUsers();
+            System.out.println("Size of users : " + users.getSize());
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);
-
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            Users users = (Users) unmarshaller.unmarshal(data);
-
-            Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(users, System.out);
-
-            for(User user : users.getUsers()) {
-                System.out.println(user.toString());
-            }
-
+            getAverageOfAllUsers(users);
+            getOldestActiveUser(users);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
     }
 
-    private static void readAndShowDataFromFile(File file) {
-        BufferedReader br = null;
-        FileReader fr = null;
-        try {
-            fr = new FileReader(file);
-            br = new BufferedReader(fr);
-            String sCurrentLine;
-            while ((sCurrentLine = br.readLine()) != null) {
-                System.out.println(sCurrentLine);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (br != null)
-                    br.close();
-                if (fr != null)
-                    fr.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+    private static void getOldestActiveUser(Users users) {
+        int oldestAge = 0;
+        for (User user: users.getUsers()) {
+            if(user.isActive() && user.getAge() > oldestAge)
+                oldestAge = user.getAge();
         }
+
+        System.out.println("Name Of Oldest Active User(s) : " );
+        for (User user: users.getUsers()) {
+            if(user.getAge() == oldestAge)
+                System.out.println("\t" + user.getName());
+        }
+    }
+
+    private static Users getUsers() throws JAXBException {
+
+        File data = new File("D:\\data.xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);
+
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Users users = (Users) unmarshaller.unmarshal(data);
+
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(users, System.out);
+        return users;
+    }
+
+    private static void getAverageOfAllUsers(Users users) {
+        double temp = 0;
+        for(User user : users.getUsers()) {
+            temp += user.getAge();
+        }
+        System.out.println("The average age of all users : " + temp / users.getSize());
     }
 }
